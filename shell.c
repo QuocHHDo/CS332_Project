@@ -44,9 +44,26 @@ int main(int argc, char* argv[]){
         /*
          * Check if user wants to quit
          */ 
-		if (strcmp(args[0], "exit" ) == 0){
-			break;	
+		if (strcmp(args[0], "run" ) == 0){
+			execv("run", &argv[0]);
+			//break;	
 		}
+
+		if (strcmp(args[0], "exit" ) == 0){
+			execv("exit", &argv[0]);
+			//break;	
+		}
+
+		if (strcmp(args[0], "tree" ) == 0){
+			execv("tree", &argv[0]);
+			//break;	
+		}
+
+		if (strcmp(args[0], "list" ) == 0){
+			execv("list", &argv[0]);
+			//break;	
+		}
+
 
         /*
          * Create child processes to execute commands

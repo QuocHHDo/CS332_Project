@@ -9,7 +9,7 @@
 #define READ_END 0
 #define WRITE_END 1
 
-void sh_list(char **args) {
+int main(char **args) {
     system("clear"); //Clear Screen();
 
     int file_desc = open("t1.txt", O_WRONLY | O_CREAT, 0666);

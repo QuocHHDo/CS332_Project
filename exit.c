@@ -4,9 +4,12 @@
 #include <string.h>
 #include <dirent.h> // Format of directory entries
 #include <errno.h> 
+#include <unistd.h>
 
-void sh_exit(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
+    char *argls[] = {"ls", "-l", NULL};
+
     DIR *dfd; // DIR is a type representing a directory stream. dfd stands for directory file descriptor. 
     struct dirent *dp; // dp stands for directory pointer
  
@@ -28,10 +31,13 @@ void sh_exit(int argc, char *argv[])
     else 
     {
         printf("All content of the current directory: \n\n");
-        while ((dp = readdir(dfd))) // Read all the files in the directory 
-        {
-            puts (dp -> d_name);
-        }
+        // while ((dp = readdir(dfd))) // Read all the files in the directory 
+        // {
+        //     puts (dp -> d_name);
+        // }
+
+        execvp(argls[0], argls);
+
     }
 
     closedir(dfd); // Close the current directory file and frees the space
