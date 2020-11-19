@@ -5,6 +5,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 //function to make directory
 int makeDirectory(char* directoryName){
@@ -40,28 +41,40 @@ int makeFile(char* fileName){
 }
 
 int main(){
-    if(makeDirectory("Dir0") == -1){
-        return -1;
-    }
+    char input[32]; 
+    char* args[1024];
 
-    if(changeDirectory("Dir0") == -1){
-        return -1;
-    }
+    while(true) {
+        if(makeDirectory("Dir0") == -1){
+            return -1;
+        }
 
-    if(makeFile("t1.txt") == -1){
-        return -1;
-    }
+        if(changeDirectory("Dir0") == -1){
+            return -1;
+        }
 
-    if(makeFile("t2.txt") == -1){
-        return -1;
-    }
+        if(makeFile("t1.txt") == -1){
+            return -1;
+        }
 
-    if(makeFile("t3.txt") == -1){
-        return -1;
-    }
+        if(makeFile("t2.txt") == -1){
+            return -1;
+        }
 
-    if(makeDirectory("Dir1") == -1){
-        return -1;
+        if(makeFile("t3.txt") == -1){
+            return -1;
+        }
+
+        if(makeDirectory("Dir1") == -1){
+            return -1;
+        }
+
+        fgets(input,sizeof(input), stdin);     
+          if(input[0]=='\n')
+          {
+            args[0] = "run";
+			execv("run", &args[0]);	
+          }  
     }
 }
 

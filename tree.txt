@@ -1,16 +1,15 @@
-total 188
-drwxr-xr-x 1 rashidulikram rashidulikram  4096 Nov 17 21:37 Dir0
--rwxrwxrwx 1 rashidulikram rashidulikram    91 Nov 17 21:33 README.txt
--rwxrwxrwx 1 rashidulikram rashidulikram 17200 Nov 17 21:33 exit
--rwxrwxrwx 1 rashidulikram rashidulikram  1533 Nov 17 21:33 exit.c
--rwxr-xr-x 1 rashidulikram rashidulikram 17440 Nov 17 21:44 list
--rwxrwxrwx 1 rashidulikram rashidulikram  1825 Nov 17 21:44 list.c
--rwxrwxrwx 1 rashidulikram rashidulikram 17248 Nov 17 21:33 path
--rwxrwxrwx 1 rashidulikram rashidulikram  2531 Nov 17 21:33 path.c
--rwxrwxrwx 1 rashidulikram rashidulikram 17264 Nov 17 21:33 run
--rwxrwxrwx 1 rashidulikram rashidulikram  1853 Nov 17 21:33 shell.c
--rw-r--r-- 1 rashidulikram rashidulikram     0 Nov 17 21:44 t1.txt
--rwxrwxrwx 1 rashidulikram rashidulikram 16984 Nov 17 21:33 test
--rwxr-xr-x 1 rashidulikram rashidulikram 16976 Nov 17 21:36 tree
--rwxrwxrwx 1 rashidulikram rashidulikram  1505 Nov 17 21:33 tree.c
--rw-r--r-- 1 rashidulikram rashidulikram  1007 Nov 17 21:44 tree.txt
+total 148
+-rwxrwxr-x 1 syedsadman syedsadman 17000 Nov 19 18:23 exit
+-rw-rw-r-- 1 syedsadman syedsadman  1326 Nov 19 18:23 exit.c
+-rwxrwxr-x 1 syedsadman syedsadman 17440 Nov 19 18:21 list
+-rw-rw-r-- 1 syedsadman syedsadman  1760 Nov 19 18:21 list.c
+-rwxrwxr-x 1 syedsadman syedsadman 17248 Nov 17 18:38 path
+-rw-rw-r-- 1 syedsadman syedsadman  2431 Nov 17 18:38 path.c
+-rw-rw-r-- 1 syedsadman syedsadman    91 Nov 17 18:08 README.txt
+-rwxrwxr-x 1 syedsadman syedsadman 17264 Nov 17 18:23 run
+-rw-rw-r-- 1 syedsadman syedsadman  1762 Nov 17 18:21 shell.c
+-rw-rw-r-- 1 syedsadman syedsadman     0 Nov 19 18:29 t1.txt
+-rwxrwxr-x 1 syedsadman syedsadman 16984 Nov 17 18:20 test
+-rwxrwxr-x 1 syedsadman syedsadman 16984 Nov 19 18:26 tree
+-rw-rw-r-- 1 syedsadman syedsadman  1784 Nov 19 18:29 tree.c
+-rw-rw-r-- 1 syedsadman syedsadman   858 Nov 19 18:29 tree.txt

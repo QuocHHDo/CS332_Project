@@ -51,12 +51,12 @@ int main(int argc, char* argv[]){
 
 		if (strcmp(args[0], "exit" ) == 0){
 			execv("exit", &argv[0]);
-			//break;	
+			continue;	
 		}
 
 		if (strcmp(args[0], "tree" ) == 0){
 			execv("tree", &argv[0]);
-			//break;	
+			continue;
 		}
 
 		if (strcmp(args[0], "list" ) == 0){
