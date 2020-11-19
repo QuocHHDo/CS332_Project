@@ -4,41 +4,36 @@
 #include <errno.h>
 #include <unistd.h>
 
-
 // This function is used to copy contents of file2 to file1
-void copyContents( char* file1 , char* file2 , char* mode ) {
-FILE *fp1, *fp2;
+void copyContents( char* file1 , char* file2 , char* file3 ) {
 
-// Open file
-    fp1 = fopen(file1, mode);
-    if (fp1 == NULL)
-    {
-        printf("Cannot open file %s for writing \n", file1);
-        return ;
+  FILE *fp1 = fopen(file1, "r");
+  FILE *fp2 = fopen(file2, "r");
+
+  // Open file to store the result
+  FILE *fp3 = fopen(file3, "w");
+  char c;
+
+  if (fp1 == NULL || fp2 == NULL || fp3 == NULL){
+      puts("Could not open files");
+      exit(0);
     }
 
-   fp2 = fopen(file1, "r");
-    if (fp2 == NULL)
-    {
-        printf("Cannot open file %s for writing \n", file2);
-        return;
-    }
+    // Copy contents of first file to file3.txt
+    while ((c = fgetc(fp1)) != EOF)
+    fputc(c, fp3);
 
-    // Read contents from file
-    char c = fgetc(fp2);
-    while (c != EOF)
-    {
-        fprintf(fp1,"%c", c);
-        c = fgetc(fp2);
-    }
+    // Copy contents of second file to file3.txt
+  while ((c = fgetc(fp2)) != EOF)
+   fputc(c, fp3);
 
-    fclose(fp1);
+   fclose(fp1);
    fclose(fp2);
-
+   fclose(fp3);
 }
 
 void file_rename( char* oldFilename, char* newFilename) {
-   int ret = rename(oldFilename, newFilename);
+    int ret = rename(oldFilename, newFilename);
 
     if(!ret)
     {
@@ -48,25 +43,6 @@ void file_rename( char* oldFilename, char* newFilename) {
     {
         perror("Error");
     }
-}
-
-void printFile(char* file ) {
-   FILE *fp1 = fopen(file, "r");
-    if (fp1 == NULL)
-    {
-        printf("Cannot open file %s for writing \n", file);
-        return;
-    }
-
-    // Read contents from file
-    char c = fgetc(fp1);
-    while (c != EOF)
-    {
-        printf(fp1,"%c", c);
-        c = fgetc(fp1);
-    }
-    fclose(fp1);
-   printf("--------End of %s ---------- \n" , file);
 }
 
 // This function implements path command
@@ -79,23 +55,45 @@ int main() {
        perror("getcwd() error");
        //return ;
    }
+   // print contents of file t2.txt
+   FILE * fptr;
+   char ch;
 
-       // print contents of file t2.txt
-       printf("Contents of t2.txt : \n") ;
-       printFile("t2.txt");
+   fptr = fopen("Dir0/t2.txt", "r");
+   // check for file opening
+   if(fptr == NULL)
+   {
+       //Unable to open file hence exit
+       printf("Unable to open file.\n");
+       printf("Please check whether file exists and you have read privilege.\n");
+       exit(EXIT_FAILURE);
+   }
+
+   //File open success message
+   printf("t2.txt opened successfully. Reading file contents: \n\n");
+
+   do
+   {
+       //Read single character from file
+       ch = fgetc(fptr);
+       // Print character read on console
+       putchar(ch);
+   } while(ch != EOF); // Repeat this if last read character is not EOF
+      fclose(fptr);
+
        // rename t2.txt to path-info.txt
-       file_rename("t2.txt","path-info.txt");
-       // copy contents of tree.txt and path.txt to t3.txt
-       copyContents("t3.txt","tree.txt","w");
-       copyContents("t3.txt","path.txt","a");
-       file_rename("t3.txt","log.txt");
-       if ( remove("tree.txt") == 0 )
-         printf(" In Path Command : deleted tree.txt successfully \n");
-       else
-          printf(" In Path Command: could not delete tree.txt \n");
+       file_rename("Dir0/t2.txt","Dir0/path-info.txt");
+       copyContents("Dir0/tree.txt","Dir0/path-info.txt","Dir0/t3.txt");
+       file_rename("Dir0/t3.txt","Dir0/log.txt");
 
-       if ( remove("path.txt") == 0 )
-          printf(" In Path Command : deleted path.txt successfully \n");
+
+       if ( remove("Dir0/tree.txt") == 0 )
+         printf("Deleted tree.txt successfully \n");
        else
-          printf(" In Path Command: could not delete path.txt \n");
+          printf("Can't delete tree.txt \n");
+
+       if ( remove("Dir0/path-info.txt") == 0 )
+          printf("Deleted path-info.txt successfully \n");
+       else
+          printf("Can't delete path.txt \n");
 }
