@@ -15,7 +15,7 @@ int main(char **args) {
 
     char input[32]; 
     while (true){
-        int file_desc = open("t1.txt", O_WRONLY | O_CREAT, 0666);
+        int file_desc = open("Dir0/t1.txt", O_WRONLY | O_CREAT, 0666);
         int pid_ls = fork(); // Fork a process to run ls -l
         if (pid_ls < 0){
         fprintf(stderr, "parent: Could not fork process to run ls\n");
@@ -39,7 +39,7 @@ int main(char **args) {
             // Wait for children to finish
             wait(NULL);
             // open file and print to stdout
-            FILE *file = fopen("t1.txt", "r");
+            FILE *file = fopen("Dir0/t1.txt", "r");
             if (file == NULL) {
                 printf("File t1.txt not found.\n");
                 exit(0);
@@ -51,7 +51,7 @@ int main(char **args) {
                 c = fgetc(file);
             }
             fclose(file);
-            rename("t1.txt", "tree.txt"); // rename file
+            rename("Dir0/t1.txt", "Dir0/tree.txt"); // rename file
         }
         fgets(input,sizeof(input), stdin);      
           if(input[0]=='\n')

@@ -64,6 +64,12 @@ int main(int argc, char* argv[]){
 			//break;	
 		}
 
+		if (strcmp(args[0], "path" ) == 0){
+			execv("path", &argv[0]);
+			//break;	
+		}
+
+
 
         /*
          * Create child processes to execute commands

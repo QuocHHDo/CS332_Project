@@ -1,0 +1,15 @@
+total 168
+drwxrwxr-x 3 syedsadman syedsadman  4096 Nov 19 18:54 Dir0
+-rwxrwxr-x 1 syedsadman syedsadman 17000 Nov 19 18:23 exit
+-rw-rw-r-- 1 syedsadman syedsadman  1326 Nov 19 18:23 exit.c
+-rwxrwxr-x 1 syedsadman syedsadman 17448 Nov 19 18:54 list
+-rw-rw-r-- 1 syedsadman syedsadman  1780 Nov 19 18:53 list.c
+-rwxrwxr-x 1 syedsadman syedsadman 17304 Nov 19 18:46 path
+-rw-rw-r-- 1 syedsadman syedsadman  2520 Nov 19 18:45 path.c
+-rw-rw-r-- 1 syedsadman syedsadman    91 Nov 17 18:08 README.txt
+-rwxrwxr-x 1 syedsadman syedsadman 17264 Nov 19 18:40 run
+-rwxrwxr-x 1 syedsadman syedsadman 17264 Nov 19 18:48 shell
+-rw-rw-r-- 1 syedsadman syedsadman  1848 Nov 19 18:46 shell.c
+-rwxrwxr-x 1 syedsadman syedsadman 16984 Nov 17 18:20 test
+-rwxrwxr-x 1 syedsadman syedsadman 17160 Nov 19 18:44 tree
+-rw-rw-r-- 1 syedsadman syedsadman  1840 Nov 19 18:44 tree.c
