@@ -92,7 +92,6 @@ int main(int argc, char* argv[]){
 		}
 		else if(child == 0){
 			execvp(args[0], args);
-			printf("Command not found\n");
 			exit(0);
 		}
 		
