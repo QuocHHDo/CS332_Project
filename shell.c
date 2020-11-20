@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 int main(int argc, char* argv[]){
-	int child;
+	int child, child2;
 	char* args[1024];
 	char buffer[1024];
 	int count;
@@ -44,29 +44,40 @@ int main(int argc, char* argv[]){
         /*
          * Check if user wants to quit
          */ 
-		if (strcmp(args[0], "run" ) == 0){
-			execv("run", &argv[0]);
-			//break;	
-		}
-
+		
 		if (strcmp(args[0], "exit" ) == 0){
 			execv("exit", &argv[0]);
 			continue;	
 		}
 
 		if (strcmp(args[0], "tree" ) == 0){
-			execv("tree", &argv[0]);
+			child2 = fork();
+			if(child2 == 0){
+				execv("tree", &argv[0]);
+				exit(0);
+			}
+			wait(NULL);
+			
 			continue;
 		}
 
 		if (strcmp(args[0], "list" ) == 0){
-			execv("list", &argv[0]);
-			//break;	
+			child2 = fork();
+			if(child2 == 0){
+				execv("list", &argv[0]);
+				exit(0);
+			}
+			wait(NULL);
 		}
+		
 
 		if (strcmp(args[0], "path" ) == 0){
-			execv("path", &argv[0]);
-			//break;	
+			child2 = fork();
+			if(child2 == 0){
+				execv("path", &argv[0]);
+				exit(0);
+			}
+			wait(NULL);
 		}
 
 

@@ -41,10 +41,7 @@ int makeFile(char* fileName){
 }
 
 int main(){
-    char input[32]; 
-    char* args[1024];
 
-    while(true) {
         if(makeDirectory("Dir0") == -1){
             return -1;
         }
@@ -68,14 +65,7 @@ int main(){
         if(makeDirectory("Dir1") == -1){
             return -1;
         }
-
-        fgets(input,sizeof(input), stdin);     
-          if(input[0]=='\n')
-          {
-            args[0] = "run";
-			execv("run", &args[0]);	
-          }  
-    }
+     
 }
 
 
