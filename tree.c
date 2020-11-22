@@ -66,6 +66,8 @@ int main(){
             return -1;
         }
      
+        printf("Tree was successfully executed!");
+ 
 }
 
 
