@@ -53,11 +53,7 @@ int main(char **args) {
             fclose(file);
             rename("Dir0/t1.txt", "Dir0/tree.txt"); // rename file
         }
-        fgets(input,sizeof(input), stdin);      
-          if(input[0]=='\n')
-          {
-               return 0; 
-          }  
+        return 0;
     }
     
 }
