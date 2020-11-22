@@ -4,43 +4,40 @@
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include <readline/history.h>
-#include <readline/readline.h>
+#include <errno.h>
 
-
-int main()  
+int main(char **args)
 {
      pid_t  pid;
      int status;               
-     char *argv[64];              /* the command line argument      */
-     char input[32]; 
+     char input[32]; // User input 
      char *argls[] = {"ls", "-l", NULL};
-       
+ 
      while(true) {
-
-          pid = fork();
           
-          if (pid < 0) {     /* fork a child process           */
-               printf("*** ERROR: forking child process failed\n");
+          pid = fork(); // Fork a child process which returns the PID of it
+          
+          if (pid < 0) { // If PID is less than 0, then fork failed 
+               fprintf(stderr, "Error forking child process: %s\n", strerror(errno));  
                exit(1);
           }
-          else if (pid == 0) 
-          {          /* for the child process:         */
-               printf("All content of the current directory: \n\n");
-               execvp(argls[0], argls);       /* execute the command  */  
+          else if (pid == 0){ // If PID is zero, then fork succeeded 
+               printf("All content of the current directory: \n");
+               
+               execvp(argls[0], argls);  // Read all the files in the directory 
           } 
-          else 
-          {                                  /* for the parent:      */
+          else // For the parent process
+          {                                  
                while (wait(&status) != pid);
                printf("\nHit the return key again to terminate the shell.\n");    
           }      
           wait(NULL);     
 
-          do { 
+          do {  // Keep asking user for input until user input next line 
                fgets(input,sizeof(input), stdin);
           } while (input[0] != '\n'); 
 
-          printf("Shell has been successfully terminated.\n");
+          printf("Shell has been successfully terminated.\n"); // Print 
           return 0; 
      }    
 }
