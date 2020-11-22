@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/wait.h>
@@ -6,12 +5,15 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+
 int main(int argc, char* argv[]){
 	int child, child2;
 	char* args[1024];
 	char buffer[1024];
 	int count;
-	
+	char* input[100]; 
+	int counter = 0; 
+	char commands[1024][50];
 	while(true){
 
         /*
@@ -38,16 +40,24 @@ int main(int argc, char* argv[]){
 		/*
          * remove newline char on final argument
          */ 
-		args[count-1][strlen(args[count- 1 ]) - 1] = '\0';
-
-
-        /*
-         * Check if user wants to quit
-         */ 
+		args[count-1][strlen(args[count- 1 ]) - 1] = '\0'; 
+		strcpy(commands[counter++],args[0]); // Copy the argument into commands array
 		
-		if (strcmp(args[0], "exit" ) == 0){
+		if (strcmp(args[0], "exit" ) == 0){ 
+
+			printf("Last 4 Commands:\n"); // Print
+			int start = counter;
+			if (start < 4){ // If less than 4 commands were inputted
+				start = 0; // Set start = 0
+			}
+			else{ // If 4 or more commands were inputted
+				start -= 4; // Set start = 4 
+			}
+			for(int i = start; i < counter; i++){ // Prints the Last Four
+				printf("%d: %s\n", i, commands[i]); // Prints
+			}
 			execv("exit", &argv[0]);
-			continue;	
+			//No wait means 'exit' command will terminate to original shell program
 		}
 
 		if (strcmp(args[0], "tree" ) == 0){
@@ -57,8 +67,6 @@ int main(int argc, char* argv[]){
 				exit(0);
 			}
 			wait(NULL);
-			
-			continue;
 		}
 
 		if (strcmp(args[0], "list" ) == 0){
@@ -69,7 +77,6 @@ int main(int argc, char* argv[]){
 			}
 			wait(NULL);
 		}
-		
 
 		if (strcmp(args[0], "path" ) == 0){
 			child2 = fork();
@@ -79,8 +86,6 @@ int main(int argc, char* argv[]){
 			}
 			wait(NULL);
 		}
-
-
 
         /*
          * Create child processes to execute commands
@@ -100,6 +105,7 @@ int main(int argc, char* argv[]){
          */ 
 		wait(NULL);
 		count = 0;
+
 		printf("\n");
 	}
 
